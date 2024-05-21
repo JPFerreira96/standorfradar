@@ -36,6 +36,11 @@ header.navbar nav ul {
     display: flex;
 }
 
+.navbar nav ul li:hover {
+    background-color: lightgreen;
+    cursor: pointer;
+}
+
 header.navbar nav ul li {
     margin-right: 20px;
     color: green;
@@ -58,14 +63,6 @@ a {
     position: relative;
 }
 
-/* .radar-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-    margin: 20px;
-} */
-
 .radar-container {
     position: relative; /* Removendo a margem */
     display: flex;
@@ -83,15 +80,15 @@ a {
 
 #matrixContainer {
     position: absolute;
-    top: 20px;
+    top: 100px;
     right: 20px;
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: auto;
 }
 
 #matrixCanvas {
-    width: 100%;
-    height: 100%;
+    width: 400px;
+    height: auto;
     border: 2px solid green;
     background-color: black;
 }
@@ -99,10 +96,10 @@ a {
 /* Estilo para o retângulo do código sendo executado */
 .cmd-container {
     position: absolute;
-    top: 38px; /* Posição abaixo da barra de navegação */
+    top: auto;
     left: 20px;
-    width: 410px; /* Largura igual a metade da tela menos as margens */
-    height: 498px; /* Altura igual à altura total menos as margens e a altura da barra de navegação */
+    width: 400px;
+    height: 500px;
     padding: 20px;
     background-color: black;
     border: 2px solid green;
@@ -114,13 +111,57 @@ a {
 
 /* Estilo da barra de rolagem */
 .cmd-container::-webkit-scrollbar {
-    width: 10px; /* Largura da barra de rolagem */
-    background-color: #0f0; /* Cor verde da barra de rolagem */
+    width: 10px;
+    background-color: #0f0;
 }
 
 /* Estilo do botão de rolagem */
 .cmd-container::-webkit-scrollbar-thumb {
-    background-color: rgb(2, 68, 7); /* Cor azul do botão de rolagem */
-    border-radius: 5px; /* Borda arredondada do botão de rolagem */
+    background-color: rgb(2, 68, 7);
 }
+
+#loginButton {
+    margin-top: 20px;
+    text-align: center;
+    background-color: green;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Jersey 15', sans-serif;
+    font-size: 30px;
+    width: 100%;
+    height: 50px;
+
+}
+
+#loginButton:hover {
+    background-color: lightgreen;
+    color: white;
+}
+
+/* Estilo para o contêiner do código digitado */
+#codeDisplayContainer {
+    width: 400px; /* Ajuste conforme necessário */
+    height: 200px; /* Ajuste conforme necessário */
+    padding: 10px;
+    background-color: black;
+    border: 2px solid green;
+    overflow-y: auto;
+    color: green;
+    font-family: monospace;
+    white-space: pre;
+}
+
+/* Estilo da barra de rolagem */
+#codeDisplayContainer::-webkit-scrollbar {
+    width: 10px;
+    background-color: #0f0;
+}
+
+/* Estilo do botão de rolagem */
+#codeDisplayContainer::-webkit-scrollbar-thumb {
+    background-color: rgb(2, 68, 7);
+}
+
 

@@ -10,8 +10,8 @@ window.addEventListener('resize', resizeRadarCanvas);
 resizeRadarCanvas();
 
 let angle = 0;
-const fadeOffRate = 0.03; // Taxa de desvanecimento
-const shadowAngleFactor = 1.2; // Fator para aumentar o ângulo da sombra
+const fadeOffRate = 0.03;
+const shadowAngleFactor = 2.0;
 
 function drawRadar() {
     const centerX = radarCanvas.width / 2;
@@ -39,7 +39,7 @@ function drawRadar() {
         radarCtx.stroke();
     }
 
-    // Desenhar sombra verde
+
     radarCtx.fillStyle = 'rgba(0, 255, 0, 0.1)';
     radarCtx.beginPath();
     radarCtx.moveTo(centerX, centerY);
@@ -47,17 +47,17 @@ function drawRadar() {
     radarCtx.closePath();
     radarCtx.fill();
 
-    // Desenhar linha vermelha
+
     radarCtx.strokeStyle = 'red';
     radarCtx.beginPath();
     radarCtx.moveTo(centerX, centerY);
     radarCtx.lineTo(centerX + radius * Math.cos(angle), centerY + radius * Math.sin(angle));
     radarCtx.stroke();
 
-    // Aplicar efeito de "fade off" na sombra verde
+
     radarCtx.fillStyle = 'rgba(0, 255, 0, 0.1)';
     radarCtx.fillRect(0, 0, radarCanvas.width, radarCanvas.height);
-    angle -= fadeOffRate; // Girar no sentido anti-horário
+    angle -= fadeOffRate;
 
     if (angle < 0) {
         angle = 2 * Math.PI;

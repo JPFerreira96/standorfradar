@@ -4,7 +4,7 @@ const matrixCtx = matrixCanvas.getContext('2d');
 matrixCanvas.width = matrixCanvas.clientWidth;
 matrixCanvas.height = matrixCanvas.clientHeight;
 
-const fontSize = 14;
+const fontSize = 10; // Reduzindo pela metade o tamanho da fonte
 const columns = matrixCanvas.width / fontSize;
 
 const drops = [];
