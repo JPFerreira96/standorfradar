@@ -1,75 +1,66 @@
-const canvas = document.getElementById('radarCanvas');
-const ctx = canvas.getContext('2d');
+const radarCanvas = document.getElementById('radarCanvas');
+const radarCtx = radarCanvas.getContext('2d');
 
-// Ajusta o tamanho do canvas para caber dentro do container
-canvas.width = canvas.parentElement.offsetWidth;
-canvas.height = canvas.parentElement.offsetHeight;
+function resizeRadarCanvas() {
+    radarCanvas.width = radarCanvas.clientWidth;
+    radarCanvas.height = radarCanvas.clientHeight;
+}
 
-const centerX = canvas.width / 2;
-const centerY = canvas.height / 2;
-const radius = Math.min(centerX, centerY) - 10;
+window.addEventListener('resize', resizeRadarCanvas);
+resizeRadarCanvas();
+
 let angle = 0;
+const fadeOffRate = 0.03; // Taxa de desvanecimento
+const shadowAngleFactor = 1.2; // Fator para aumentar o ângulo da sombra
 
 function drawRadar() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const centerX = radarCanvas.width / 2;
+    const centerY = radarCanvas.height / 2;
+    const radius = Math.min(centerX, centerY) - 10;
     
-    // Desenho das Circunferências e linhas dentro do radar
-    ctx.strokeStyle = 'green'; // Cor das circunferências e linhas
-    ctx.lineWidth = 2; // Largura das circunferências e linhas
+    radarCtx.clearRect(0, 0, radarCanvas.width, radarCanvas.height);
+    
+    radarCtx.strokeStyle = 'green';
+    radarCtx.lineWidth = 2;
     for (let i = 1; i <= 5; i++) {
         const circleRadius = radius * i / 5;
+        radarCtx.beginPath();
+        radarCtx.arc(centerX, centerY, circleRadius, 0, 2 * Math.PI);
+        radarCtx.stroke();
         
-        // Desenho da circunferência
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, circleRadius, 0, 2 * Math.PI);
-        ctx.stroke();
-        
-        // Desenho da linha horizontal dentro do raio atual
-        ctx.beginPath();
-        ctx.moveTo(centerX - circleRadius, centerY);
-        ctx.lineTo(centerX + circleRadius, centerY);
-        ctx.stroke();
+        radarCtx.beginPath();
+        radarCtx.moveTo(centerX - circleRadius, centerY);
+        radarCtx.lineTo(centerX + circleRadius, centerY);
+        radarCtx.stroke();
 
-        // Desenho da linha vertical dentro do raio atual
-        ctx.beginPath();
-        ctx.moveTo(centerX, centerY - circleRadius);
-        ctx.lineTo(centerX, centerY + circleRadius);
-        ctx.stroke();
+        radarCtx.beginPath();
+        radarCtx.moveTo(centerX, centerY - circleRadius);
+        radarCtx.lineTo(centerX, centerY + circleRadius);
+        radarCtx.stroke();
     }
 
-    // Desenho dos pontos cardeais
-    ctx.fillStyle = 'green';
-    ctx.font = '14px Arial'; // Definindo a fonte e o tamanho do texto
-    ctx.textAlign = 'center'; // Alinhamento horizontal central
-    ctx.textBaseline = 'middle'; // Alinhamento vertical central
+    // Desenhar sombra verde
+    radarCtx.fillStyle = 'rgba(0, 255, 0, 0.1)';
+    radarCtx.beginPath();
+    radarCtx.moveTo(centerX, centerY);
+    radarCtx.arc(centerX, centerY, radius, angle, angle + shadowAngleFactor * (Math.PI / 6));
+    radarCtx.closePath();
+    radarCtx.fill();
 
-    // Norte
-    ctx.fillText('N', centerX, centerY - radius - 15);
-    // Sul
-    ctx.fillText('S', centerX, centerY + radius + 15);
-    // Leste
-    ctx.fillText('E', centerX + radius + 15, centerY);
-    // Oeste
-    ctx.fillText('W', centerX - radius - 15, centerY);    
+    // Desenhar linha vermelha
+    radarCtx.strokeStyle = 'red';
+    radarCtx.beginPath();
+    radarCtx.moveTo(centerX, centerY);
+    radarCtx.lineTo(centerX + radius * Math.cos(angle), centerY + radius * Math.sin(angle));
+    radarCtx.stroke();
 
-    // Desenho das linhas do radar (linha vermelha)
-    ctx.strokeStyle = 'rgba(0, 255, 0, 0.1)';
-    ctx.beginPath();
-    ctx.moveTo(centerX, centerY);
-    ctx.lineTo(centerX + radius * Math.cos(angle), centerY + radius * Math.sin(angle));
-    ctx.stroke();
+    // Aplicar efeito de "fade off" na sombra verde
+    radarCtx.fillStyle = 'rgba(0, 255, 0, 0.1)';
+    radarCtx.fillRect(0, 0, radarCanvas.width, radarCanvas.height);
+    angle -= fadeOffRate; // Girar no sentido anti-horário
 
-    // Desenho da varredura do radar (sombra verde)
-    ctx.beginPath();
-    ctx.moveTo(centerX, centerY);
-    ctx.arc(centerX, centerY, radius, angle, angle + Math.PI / 6);
-    ctx.closePath();
-    ctx.fillStyle = 'rgba(0, 255, 0, 0.1)';
-    ctx.fill();
-
-    angle += 0.01;
-    if (angle >= 2 * Math.PI) {
-        angle = 0;
+    if (angle < 0) {
+        angle = 2 * Math.PI;
     }
 
     requestAnimationFrame(drawRadar);
