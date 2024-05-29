@@ -1,5 +1,11 @@
-const codeDisplayContainer = document.getElementById('codeDisplayContainer');
 
+window.BASE_URL = '/Users/Júlio%20Paulo/Desktop/radar';
+
+document.getElementById('loginButton').addEventListener('click', function() {
+    window.location.href = `${window.BASE_URL}/login/loginindex.html`; // Usando o BASE_URL no caminho de redirecionamento
+});
+
+const codeDisplayContainer = document.getElementById('codeDisplayContainer');
 // Código para ser exibido
 const codeLines = [
     "const codeDisplayContainer = document.getElementById('codeDisplayContainer');",

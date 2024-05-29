@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSK Standorfradar</title>
+    <style>
+        @font-face {
+            font-family: 'Jersey 15';
+            src: url('../utils/fonts/Jersey15-Regular.ttf') format('truetype');
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000000;
+            color: green;
+            font-family: 'Jersey 15', Arial, sans-serif;
+            margin: 0;
+        }
+
+        .progress-container {
+            text-align: center;
+            width: 80%; /* Adjust the width as needed */
+        }
+
+        .progress-container h2 {
+            margin-bottom: 20px;
+            font-family: 'Jersey 15';
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: black;
+            border: 1px solid green;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 30px;
+            width: 0;
+            background-color: green;
+            text-align: center;
+            line-height: 30px;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-container">
+        <h2>LADEN VON INFORMATIONEN...</h2>
+        <div class="progress-bar">
+            <div class="progress" id="progress">0%</div>
+        </div>
+    </div>
+
+    <script>
+        let progress = 0;
+        const progressBar = document.getElementById('progress');
+        const duration = 10 * 60 * 1000; // 10 minutes in milliseconds
+        const interval = duration / 100; // Time per percentage point
+
+        function updateProgress() {
+            progress++;
+            progressBar.style.width = progress + '%';
+            progressBar.textContent = progress + '%';
+
+            if (progress < 100) {
+                setTimeout(updateProgress, interval);
+            } else {
+                // Redirect after 10 minutes
+                window.location.href = 'finalPage.html'; // Replace with the target page
+            }
+        }
+
+        setTimeout(updateProgress, interval);
+    </script>
+</body>
+</html>

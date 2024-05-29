@@ -1,0 +1,128 @@
+@font-face {
+    font-family: 'Jersey 15';
+    src: url('../utils/fonts/Jersey15-Regular.ttf') format('truetype');
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000000;
+    margin: 0;
+    font-family: 'Jersey 15', Arial, sans-serif;
+}
+
+.login-container {
+    background-color: #000000;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+}
+
+.globe-container {
+    margin-bottom: 20px;
+}
+
+/* .globe {
+    animation: spin 4s linear infinite;
+} */
+
+.globe {
+    width: 50px; /* Ajuste essa largura conforme necessário */
+    height: 50px; /* Ajuste essa altura conforme necessário */
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    color: green;
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-container label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: green;
+}
+
+.login-container input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid green;
+    background-color: #000000;
+    color: green;
+    font-size: 16px;
+    font-family: 'Jersey 15', Arial, sans-serif;
+
+}
+
+.login-container button {
+    padding: 10px;
+    background-color: green;
+    border: none;
+    color: #000000;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Jersey 15', Arial, sans-serif;
+
+}
+
+.login-container button:hover {
+    background-color: #005f00;
+}
+
+/* .toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #000000;
+    color: red;
+    border: 2px solid red;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s, top 0.3s;
+    font-family: 'Jersey 15', Arial, sans-serif;
+
+}
+
+.toast.show {
+    opacity: 1;
+    top: 30px;
+} */
+
+.toast-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+}
+
+.toast {
+    background-color: black;
+    color: red;
+    padding: 10px;
+    border-radius: 5px;
+    border: solid red;
+    margin-top: 10px;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+}
+
+.toast.show {
+    opacity: 1;
+}

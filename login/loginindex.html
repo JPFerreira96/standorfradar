@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSK Standorfradar</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="globe-container">
+            <svg class="globe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="green" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10A15.3 15.3 0 0 1 8 12a15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+        </div>
+        <h2>EINLOGGEN</h2>
+        <form id="loginForm">
+            <label for="username">BENUTZER</label>
+            <input type="text" id="username" name="username" required autocomplete="off">
+            
+            <label for="password">PASSWORT</label>
+            <input type="password" id="password" name="password" required autocomplete="off">
+            
+            <button type="submit">EINTRETEN</button>
+            <div id="toastContainer"></div>
+        </form>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>

@@ -212,14 +212,12 @@ const hackerCommands = [
     "compromise autonomous drone system"
 ];
 
-// Função para executar os comandos em loop infinito
 function executeCommands() {
     let index = 0;
 
-    // Função para executar um comando
     function executeCommand() {
         if (index >= hackerCommands.length) {
-            index = 0; // Reinicia o índice para repetir os comandos
+            index = 0;
         }
 
         const command = hackerCommands[index];
@@ -229,7 +227,7 @@ function executeCommands() {
         cmdContainer.scrollTop = cmdContainer.scrollHeight;
 
         index++;
-        setTimeout(executeCommand, 1500); // Tempo de espera entre cada comando (em milissegundos)
+        setTimeout(executeCommand, 150);
     }
 
     executeCommand(); // Inicia a execução dos comandos

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radar Image with Matrix Code</title>
+    <title>KSK Standorfradar</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="utils/fontawesome-free-6.5.2-web/css/all.min.css">
 </head>
@@ -36,7 +36,12 @@
    
     <script src="js/radar.js"></script>
     <script src="js/matrix.js"></script>
-    <script src="js/codeTyping.js"></script>
+    <script src="js/codeTyping.js" defer></script>
     <script src="js/terminal.js" defer></script>
+    <script>
+        document.getElementById('loginButton').addEventListener('click', function() {
+            window.location.href = '/login/loginindex.html'; // Caminho correto para o arquivo de login
+        });
+    </script>
 </body>
 </html>
