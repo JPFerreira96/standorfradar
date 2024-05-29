@@ -4,7 +4,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     const password = document.getElementById('password').value;
 
     if (username === 'THANATOS' && password === '4B%56H3006') {
-        // Redireciona para a página de Loading
+        
         window.location.href = 'loading.html';
         localStorage.setItem('lastPage', window.location.href);
     } else {

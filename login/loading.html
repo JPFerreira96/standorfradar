@@ -23,7 +23,7 @@
 
         .progress-container {
             text-align: center;
-            width: 80%; /* Adjust the width as needed */
+            width: 80%; /* Ajust the width as needed */
         }
 
         .progress-container h2 {
@@ -51,7 +51,7 @@
 </head>
 <body>
     <div class="progress-container">
-        <h2>LADEN VON INFORMATIONEN...</h2>
+        <h2>STELLE VERBINDUNG HER...</h2>
         <div class="progress-bar">
             <div class="progress" id="progress">0%</div>
         </div>
@@ -60,7 +60,7 @@
     <script>
         let progress = 0;
         const progressBar = document.getElementById('progress');
-        const duration = 10 * 60 * 1000; // 10 minutes in milliseconds
+        const duration = 5 * 1000; // 5 seconds in milliseconds
         const interval = duration / 100; // Time per percentage point
 
         function updateProgress() {
@@ -71,8 +71,8 @@
             if (progress < 100) {
                 setTimeout(updateProgress, interval);
             } else {
-                // Redirect after 10 minutes
-                window.location.href = 'finalPage.html'; // Replace with the target page
+                // Redirect after 5 seconds
+                window.location.href = 'file:///C:/Users/Júlio%20Paulo/Desktop/radar/areatrabalho/areatrabalho.html';
             }
         }
 

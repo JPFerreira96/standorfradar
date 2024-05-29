@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área de Trabalho</title>
+    <style>
+        @font-face {
+            font-family: 'Jersey 15';
+            src: url('../utils/fonts/Jersey15-Regular.ttf') format('truetype');
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            height: 100vh;
+            background-color: #000000;
+            color: green;
+            font-family: 'Jersey 15', Arial, sans-serif;
+            margin: 0;
+            position: relative;
+        }
+
+        .desktop {
+            flex: 1;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .icon {
+            text-align: center;
+            color: rgb(61, 240, 6);
+            cursor: pointer;
+            margin: 20px;
+        }
+
+        .icon img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .icon label {
+            display: block;
+            margin-top: 8px;
+            font-family: 'Jersey 15';
+            word-wrap: break-word; /* Adiciona quebra de linha */
+        }
+
+        .taskbar {
+            background-color: darkgreen;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .start-menu-button {
+            background-color: green;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            width: 150px;
+            font-size: 18px;
+            font-family: 'Jersey 15';
+            cursor: pointer;
+        }
+
+        .start-menu-button:hover{
+            background-color: lightgreen;
+            color:black
+        }
+
+        .start-menu {
+            display: none;
+            position: absolute;
+            bottom: 50px;
+            left: 10px;
+            background-color: black;
+            color: green;
+            border: 1px solid green;
+            border-radius: 5px;
+            padding: 10px;
+            width: 200px;
+        }
+
+        .start-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .start-menu li {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid green;
+        }
+
+        .start-menu li:last-child {
+            border-bottom: none;
+        }
+
+        .start-menu li:hover {
+            background-color: lightgreen;
+            color:black
+        }
+
+        .date-time {
+            color: black;
+            font-family: 'Jersey 15';
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="desktop">
+        <div class="icon">
+            <img src="../utils/icons8-document-50.png" alt="Ícone 1">
+            <label>Geheimdienstagent</label>
+        </div>
+        <div class="icon">
+            <img src="../utils/icons8-document-50.png" alt="Ícone 2">
+            <label>Genauer Standort der Erdrakete</label>
+        </div>
+    </div>
+    <div class="taskbar">
+        <button class="start-menu-button" onclick="toggleStartMenu()">START</button>
+        <div class="date-time" id="dateTime"></div>
+        <div class="start-menu" id="startMenu">
+            <ul>
+                <li onclick="alert('Tópico 1')">Tópico 1</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function toggleStartMenu() {
+            const startMenu = document.getElementById('startMenu');
+            startMenu.style.display = startMenu.style.display === 'block' ? 'none' : 'block';
+        }
+
+        window.addEventListener('click', function(e) {
+            const startMenu = document.getElementById('startMenu');
+            const startButton = document.querySelector('.start-menu-button');
+            if (!startMenu.contains(e.target) && !startButton.contains(e.target)) {
+                startMenu.style.display = 'none';
+            }
+        });
+
+        function updateDateTime() {
+            const now = new Date();
+            const dateTimeString = now.toLocaleString('pt-BR', {
+                dateStyle: 'short',
+                timeStyle: 'short'
+            });
+            document.getElementById('dateTime').textContent = dateTimeString;
+        }
+
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+    </script>
+</body>
+</html>
