@@ -23,7 +23,7 @@
 
         .progress-container {
             text-align: center;
-            width: 80%; /* Ajust the width as needed */
+            width: 80%;
         }
 
         .progress-container h2 {
@@ -60,8 +60,8 @@
     <script>
         let progress = 0;
         const progressBar = document.getElementById('progress');
-        const duration = 5 * 1000; // 5 seconds in milliseconds
-        const interval = duration / 100; // Time per percentage point
+        const duration = 5 * 1000;
+        const interval = duration / 100;
 
         function updateProgress() {
             progress++;
@@ -71,7 +71,6 @@
             if (progress < 100) {
                 setTimeout(updateProgress, interval);
             } else {
-                // Redirect after 5 seconds
                 window.location.href = 'file:///C:/Users/Júlio%20Paulo/Desktop/radar/areatrabalho/areatrabalho.html';
             }
         }

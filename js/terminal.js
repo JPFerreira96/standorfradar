@@ -1,6 +1,5 @@
 const cmdContainer = document.getElementById('cmdContainer');
 
-// Lista de comandos de hacker
 const hackerCommands = [
     "decrypt firewall",
     "hack mainframe",
@@ -230,7 +229,7 @@ function executeCommands() {
         setTimeout(executeCommand, 150);
     }
 
-    executeCommand(); // Inicia a execução dos comandos
+    executeCommand();
 }
 
-executeCommands(); // Chama a função para iniciar a execução dos comandos
+executeCommands();

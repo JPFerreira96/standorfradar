@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSK Standorfradar</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000000;
+            color: green;
+            font-family: Arial, sans-serif;
+        }
+        .map-container {
+            position: relative;
+        }
+        .map-image {
+            max-width: 100%;
+            height: auto;
+        }
+        .point {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: red;
+            border-radius: 50%;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        /* Adicione as coordenadas dos pontos */
+        .point1 { top: 8%; left: 35%; }
+        .point2 { top: 20%; left: 42%; }
+        .point3 { top: 60%; left: 40%; }
+        .point4 { top: 8%; left: 80%; }
+
+        /* Estilo dos textos dos pontos */
+        .point-label {
+            position: absolute;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 2px 5px;
+            border-radius: 3px;
+            white-space: nowrap;
+            transform: translateX(-50%);
+        }
+        .label1 { top: 15%; left: 35%; }
+        .label2 { top: 27%; left: 42%; }
+        .label3 { top: 67%; left: 40%; }
+        .label4 { top: 15%; left: 80%; }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: green;
+            color: black;
+            font-family: Arial, sans-serif;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        .close-button:hover {
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <button class="close-button" onclick="goBack()">X</button>
+    <div class="map-container">
+        <img src="C:/Users/Júlio Paulo/Desktop/radar/utils/map.jpg" alt="Mapa" class="map-image">
+        <div class="point point1"></div>
+        <div class="point point2"></div>
+        <div class="point point3"></div>
+        <div class="point point4"></div>
+        <div class="point-label label1">Destruir Base Terrorista</div>
+        <div class="point-label label2">Destruir Ponto de Distribuição SARIN</div>
+        <div class="point-label label3">Destruir Ponto de Transitação de Terroristas 1</div>
+        <div class="point-label label4">Destruir Ponto de Transitação de Terroristas 2</div>
+    </div>
+    <script>
+        function goBack() {
+            // Volta para a página da área de trabalho
+            window.location.href = 'C:/Users/Júlio Paulo/Desktop/radar/areatrabalho/areatrabalho.html';
+        }
+    </script>
+</body>
+</html>

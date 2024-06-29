@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Área de Trabalho</title>
+    <title>KSK Standorfradar</title>
     <style>
         @font-face {
             font-family: 'Jersey 15';
-            src: url('../utils/fonts/Jersey15-Regular.ttf') format('truetype');
+            src: url('utils/fonts/Jersey15-Regular.ttf') format('truetype');
         }
 
         body {
@@ -47,7 +47,7 @@
             display: block;
             margin-top: 8px;
             font-family: 'Jersey 15';
-            word-wrap: break-word; /* Adiciona quebra de linha */
+            word-wrap: break-word;
         }
 
         .taskbar {
@@ -72,9 +72,9 @@
             cursor: pointer;
         }
 
-        .start-menu-button:hover{
+        .start-menu-button:hover {
             background-color: lightgreen;
-            color:black
+            color: black;
         }
 
         .start-menu {
@@ -108,7 +108,7 @@
 
         .start-menu li:hover {
             background-color: lightgreen;
-            color:black
+            color: black;
         }
 
         .date-time {
@@ -116,16 +116,73 @@
             font-family: 'Jersey 15';
             text-align: right;
         }
+
+        .pdf-viewer, .modal {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* Preto com opacidade */
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pdf-viewer iframe, .modal-content {
+            width: 80%;
+            height: 80%;
+            background-color: black;
+            color: green;
+            border: 1px solid green;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .pdf-viewer iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+        .close-button, .modal-close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: green;
+            color: black;
+            font-family: 'Jersey 15';
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .modal-close-button {
+            top: 20px;
+            right: 20px;
+        }
+
+        .modal-content {
+            background-color: black;
+            border: none;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .modal-content h1, .modal-content p {
+            margin: 0;
+            padding: 0;
+        }
     </style>
 </head>
 <body>
     <div class="desktop">
-        <div class="icon">
-            <img src="../utils/icons8-document-50.png" alt="Ícone 1">
+        <div class="icon" onclick="openPDF('C:/Users/Júlio Paulo/Desktop/radar/utils/Central%20Inteligence%20Agency.pdf')">
+            <img src="C:/Users/Júlio Paulo/Desktop/radar/utils/icons8-document-50.png" alt="Ícone 1">
             <label>Geheimdienstagent</label>
         </div>
-        <div class="icon">
-            <img src="../utils/icons8-document-50.png" alt="Ícone 2">
+        <div class="icon" onclick="openMap()">
+            <img src="C:/Users/Júlio Paulo/Desktop/radar/utils/icons8-document-50.png" alt="Ícone 2">
             <label>Genauer Standort der Erdrakete</label>
         </div>
     </div>
@@ -134,7 +191,29 @@
         <div class="date-time" id="dateTime"></div>
         <div class="start-menu" id="startMenu">
             <ul>
-                <li onclick="alert('Tópico 1')">Tópico 1</li>
+                <li onclick="openModal()">Launcher Attack Terra</li>
+            </ul>
+        </div>
+    </div>
+    <div class="pdf-viewer" id="pdfViewer">
+        <button class="close-button" onclick="closePDF()">X</button>
+        <iframe id="pdfFrame" src="" frameborder="0"></iframe>
+    </div>
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="modal-close-button" onclick="closeModal()">X</button>
+            <h1>Instruções para Acionamento do Dispositivo Launcher Attack Terra</h1>
+            <p>
+                O dispositivo Launcher Attack Terra é um equipamento avançado projetado para operações estratégicas de longo alcance. 
+                Siga estas instruções para garantir que o dispositivo seja ativado corretamente:
+            </p>
+            <ul>
+                <li>1. Verifique a integridade dos componentes principais do dispositivo.</li>
+                <li>2. Conecte o Painel de Controle ao LAT.</li>
+                <li>3. Acione o Botão de Força e insira o código de ativação fornecido.</li>
+                <li>4. Ao executar a calibração aguarde até que a segunda luz seja ativada.</li>
+                <li>5. O dispositivo está preparado para acionamento.</li>
+                <li>6. Dispare !!.</li>
             </ul>
         </div>
     </div>
@@ -164,6 +243,35 @@
 
         setInterval(updateDateTime, 1000);
         updateDateTime();
+
+        function openPDF(pdfPath) {
+            const pdfViewer = document.getElementById('pdfViewer');
+            const pdfFrame = document.getElementById('pdfFrame');
+            pdfFrame.src = pdfPath;
+            pdfViewer.style.display = 'flex';
+        }
+
+        function closePDF() {
+            const pdfViewer = document.getElementById('pdfViewer');
+            pdfViewer.style.display = 'none';
+            const pdfFrame = document.getElementById('pdfFrame');
+            pdfFrame.src = '';
+        }
+
+        function openMap() {
+            // Abre o mapa na mesma aba
+            window.location.href = 'C:/Users/Júlio Paulo/Desktop/radar/map/map.html';
+        }
+
+        function openModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none';
+        }
     </script>
 </body>
 </html>
